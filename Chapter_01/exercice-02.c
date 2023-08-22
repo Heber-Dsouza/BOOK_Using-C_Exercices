@@ -6,8 +6,7 @@ int main(){
     char response[1000] = "", buff[22];
     for(int i = 1; i <= 200; i++){
         if(i % 2 == 0){
-            snprintf(buff, 22, "%d,", i);
-            strcat(response, buff);
+            strcat(response, (snprintf(buff, 22, "%d,", i), buff));
             sum += i;
         }
     }
