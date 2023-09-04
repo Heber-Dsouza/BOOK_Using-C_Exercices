@@ -18,25 +18,38 @@ void Sum(void** nums, int typedAs){
 
   typedAs == 0
   ? printf("> (A + B): %d + %d = %d\n\n\n", *((int*)(*nums)), *((int*)(*nums) + 1), *((int*)(*nums)) + *((int*)(*nums) + 1))
-  : printf("> (A + B): %g + %g = %g\n\n\n", *((double*)nums), *(((double*)nums) + 1), *((double*)nums) + *(((double*)nums) + 1));
+  : printf("> (A + B): %g + %g = %g\n\n\n", *((double*)(*nums)), *((double*)(*nums) + 1), *((double*)(*nums)) + *((double*)(*nums) + 1));
 }
 
 void Subtract(void** nums, int typedAs){
   typedAs == 0
   ? printf("> (A - B): %d - %d = %d\n\n\n", *((int*)(*nums)), *((int*)(*nums) + 1), *((int*)(*nums)) - *((int*)(*nums) + 1))
-  : printf("> (A - B): %g - %g = %g\n\n\n", *((double*)nums), *(((double*)nums) + 1), *((double*)nums) - *(((double*)nums) + 1));
+  : printf("> (A - B): %g - %g = %g\n\n\n", *((double*)(*nums)), *((double*)(*nums) + 1), *((double*)(*nums)) - *((double*)(*nums) + 1));
 }
 
 void Multiply(void** nums, int typedAs){
   typedAs == 0
   ? printf("> (A * B): %d * %d = %d\n\n\n", *((int*)(*nums)), *((int*)(*nums) + 1), *((int*)(*nums)) * *((int*)(*nums) + 1))
-  : printf("> (A * B): %g * %g = %g\n\n\n", *((double*)nums), *(((double*)nums) + 1), *((double*)nums) * *(((double*)nums) + 1));
+  : printf("> (A * B): %g * %g = %g\n\n\n", *((double*)(*nums)), *((double*)(*nums) + 1), *((double*)(*nums)) * *((double*)(*nums) + 1));
 }
 
 void Divide(void** nums, int typedAs){
   typedAs == 0
   ? printf("> (A / B): %d / %d = %d\n\n\n", *((int*)(*nums)), *((int*)(*nums) + 1), *((int*)(*nums)) / *((int*)(*nums) + 1))
-  : printf("> (A / B): %g / %g = %g\n\n\n", *((double*)nums), *(((double*)nums) + 1), *((double*)nums) / *(((double*)nums) + 1));
+  : printf("> (A / B): %g / %g = %g\n\n\n", *((double*)(*nums)), *((double*)(*nums) + 1), *((double*)(*nums)) / *((double*)(*nums) + 1));
+}
+
+void Exponentiation(int* nums){
+  int result = 1;
+  for(int i = 0; i < nums[1]; i++){
+    result *= nums[0];
+  }
+  printf("> (A ** B): %d ** %d = %d\n\n\n", nums[0], nums[1], result);
+}
+
+int CalcFatorial(int x){
+    if(x == 1)return 1;
+    return x * CalcFatorial(x - 1);
 }
 
 // ----------------------------------------------------------------------------------------------------------
@@ -70,7 +83,7 @@ int isValidNumber(char number[]){
 }
 
 int getInput(char numbers[][INPUT_MAX_CHAR], int*** maxLength, int*** currentState){
-  int tempLength = ***maxLength;
+  int tempLength = ***currentState == 6 ? 1 : ***maxLength;
   for(int i = 0; i < tempLength; i++){
     printf("> (%c): ", i + 65);
     scanf("%s", &numbers[i]);
@@ -90,8 +103,11 @@ void OperationInterface(char numbers[][INPUT_MAX_CHAR], int** maxLength, int** c
     int typedAs = 0; // 0: int, 1: double
     void **gp;
     if(anyDouble(numbers, maxLength)){
-      *gp = (void**)&double_converted;
+      gp = (void**)&double_converted;
       typedAs = 1;
+      for(int i = 0; i < **maxLength; i++){
+        double_converted[i] = atof(numbers[i]);
+      }
     } else {
       gp = (void**)&int_converted;
       for(int i = 0; i < **maxLength; i++){
@@ -111,13 +127,27 @@ void OperationInterface(char numbers[][INPUT_MAX_CHAR], int** maxLength, int** c
       case 4: 
         Divide(gp, typedAs);
         break;
+      case 5: 
+        if(typedAs == 1){
+          printf("> Permitido apenas numeros inteiros!\n");
+        } else {
+          Exponentiation(int_converted);
+        }
+        break;
+      case 6: 
+        if(typedAs == 1){
+          printf("> Permitido apenas numeros inteiros!\n");
+        } else {
+          printf("> (!A): !%d = %d\n\n\n", int_converted[0], CalcFatorial(int_converted[0]));
+        }
+        break;
       default:
         break;
     }
   }
 }
 
-int SelectOption(int* state, int* maxLegth, int* currentState){
+int SelectOption(int* state, int* maxLegth, int* currentState, int* isRunning){
   char nums[INPUT_MAX_QUANTITY][INPUT_MAX_CHAR];
   int selectedOptions = 1;
   switch(*state){
@@ -133,9 +163,20 @@ int SelectOption(int* state, int* maxLegth, int* currentState){
     case 4: 
       printf("\nDIVIDIR:\n\n");
       break;
+    case 5: 
+      printf("\nEXPONENCIACAO:\n\n");
+      break;
+    case 6: 
+      printf("\nFATORIAL:\n\n");
+      break;
     case 9: 
       printf("\e[1;1H\e[2J");
       *currentState = 0;
+      selectedOptions = 0;
+      break;
+    case 0: 
+      printf("Good bye!");
+      *isRunning = 0;
       selectedOptions = 0;
       break;
     default:
@@ -149,7 +190,7 @@ int SelectOption(int* state, int* maxLegth, int* currentState){
 
 int MainMenu(int* state){
   int selected, flag = 0;
-  printf("\nEscolha uma das opcoes abaixo: \n\n  [1]: SOMAR\n  [2]: SUBTRAIR\n  [3]: MULTIPLICAR\n  [4]: DIVIDIR\n\n  [9]: limpar tela\n  [0]: sair\n");
+  printf("\nEscolha uma das opcoes abaixo: \n\n  [1]: SOMAR\n  [2]: SUBTRAIR\n  [3]: MULTIPLICAR\n  [4]: DIVIDIR\n  [5]: EXPONENCIACAO\n  [6]: FATORIAL\n\n  [9]: limpar tela\n  [0]: sair\n");
   printf("\nSua escolha: ");
   if(scanf("%d", &selected)){
     *state = selected;
@@ -173,7 +214,7 @@ int main(){
       isInputValid = MainMenu(&currentState);
     }
     if(isInputValid){
-      SelectOption(&currentState, &maxLegth, &currentState);
+      SelectOption(&currentState, &maxLegth, &currentState, &isRunning);
     }
     
   }
