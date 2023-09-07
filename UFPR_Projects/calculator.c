@@ -86,7 +86,7 @@ int getInput(char numbers[][INPUT_MAX_CHAR], int*** maxLength, int*** currentSta
   int tempLength = ***currentState == 6 ? 1 : ***maxLength;
   for(int i = 0; i < tempLength; i++){
     printf("> (%c): ", i + 65);
-    scanf("%s", &numbers[i]);
+    scanf("%s", numbers[i]);
     if(isValidNumber(numbers[i]) == 0){ 
       tempLength = i;
       ***currentState = 0;
@@ -171,7 +171,7 @@ int SelectOption(int* state, int* maxLegth, int* currentState, int* isRunning){
       break;
     case 9: 
       printf("\e[1;1H\e[2J");
-      *currentState = 0;
+      // *currentState = 0;
       selectedOptions = 0;
       break;
     case 0: 
@@ -186,6 +186,7 @@ int SelectOption(int* state, int* maxLegth, int* currentState, int* isRunning){
   }
   if(selectedOptions)
     OperationInterface(nums, &maxLegth, &currentState, &state);
+    *currentState = 0;
 }
 
 int MainMenu(int* state){
