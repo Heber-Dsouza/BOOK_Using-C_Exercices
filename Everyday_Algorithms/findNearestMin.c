@@ -29,3 +29,7 @@ int main(){
   free(nearestMin);
   return 0;
 }
+
+/*
+	Algoritmo para identificar o número mais próximo maior do que o valor.
+*/
