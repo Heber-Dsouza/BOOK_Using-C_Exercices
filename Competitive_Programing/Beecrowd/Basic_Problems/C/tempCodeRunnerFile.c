@@ -9,3 +9,5 @@ int main(){
     printf("%d\n", n + (i * 2) + 1);
   return 0;
 }
+
+// ?
