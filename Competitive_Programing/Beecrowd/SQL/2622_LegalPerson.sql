@@ -1,5 +1,5 @@
 create table customers(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     street varchar(255) not null,
     city varchar(255) not null,
@@ -8,14 +8,14 @@ create table customers(
 );
 
 create table legal_person(
-	id_customers int not null, foreign key (id_customers) references customers(id),
+    id_customers int not null, foreign key (id_customers) references customers(id),
     cnpj char(18) not null,
     contact varchar(10) not null
 );
 
 insert into customers(name, street, city, state, credit_limit)
 values
-	("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
+    ("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
     ("Cecília Olivia Rodrigues", "Rua Sizuka Usuy", "Cianorte", "PR", 3170),
     ("Augusto Fernando Carlos Eduardo Cardoso", "Rua Baldomiro Koerich", "Palhoça", "SC", 1067),
     ("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
@@ -24,15 +24,15 @@ values
     
 insert into legal_person
 values
-	(4, "85883842000191", "99767-0562"),
+    (4, "85883842000191", "99767-0562"),
     (5, "47773848000117", "99100-8965");
   
 -- Esses funcionam também, mas o compilador do site não aceitou
 select name from customers c join legal_person lp on lp.id_customers = c.id
-	group by lp.id_customers;
+    group by lp.id_customers;
     
 select c.name from customers c join legal_person lp on lp.id_customers = c.id
-	where lp.id_customers;
+    where lp.id_customers;
     
 -- Response -------------------------------------------------------
     
