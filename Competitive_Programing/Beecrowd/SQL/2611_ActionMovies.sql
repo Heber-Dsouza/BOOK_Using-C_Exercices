@@ -1,17 +1,17 @@
 create table genres(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     description varchar(255) not null
 );
 
 create table movies(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     id_genres int not null,  foreign key (id_genres) references genres(id)
 );
 
 insert into genres(description)
 	values
-		("Animation"),
+	("Animation"),
         ("Horror"),
         ("Action"),
         ("Drama"),
@@ -19,7 +19,7 @@ insert into genres(description)
         
 insert into movies(name, id_genres)
 	values
-		("Batman", 3),
+	("Batman", 3),
         ("The Battle of the Dark River", 3),
         ("White Duck", 1),
         ("Breaking Barriers", 4),
