@@ -1,5 +1,5 @@
 create table customers(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(80) not null,
     street varchar(100) not null,
     city varchar(80) not null
@@ -7,12 +7,12 @@ create table customers(
 
 insert into customers (name, street, city)
 values
-  ('Giovanna Goncalves Oliveira',	'Rua Mato Grosso',	'Canoas'),
-  ('Kauã Azevedo Ribeiro',	'Travessa Ibiá',	'Uberlândia'),
-  ('Rebeca Barbosa Santos',	'Rua Observatório Meteorológico',	'Salvador'),
-  ('Sarah Carvalho Correia',	'Rua Antônio Carlos da Silva',	'Uberlândia'),
-  ('João Almeida Lima',	'Rua Rio Taiuva',	'Ponta Grossa'),
-  ('Diogo Melo Dias',	'Rua Duzentos e Cinqüenta',	'Várzea Grande');
+  ('Giovanna Goncalves Oliveira', 'Rua Mato Grosso', 'Canoas'),
+  ('Kauã Azevedo Ribeiro', 'Travessa Ibiá', 'Uberlândia'),
+  ('Rebeca Barbosa Santos', 'Rua Observatório Meteorológico', 'Salvador'),
+  ('Sarah Carvalho Correia', 'Rua Antônio Carlos da Silva', 'Uberlândia'),
+  ('João Almeida Lima',	'Rua Rio Taiuva', 'Ponta Grossa'),
+  ('Diogo Melo Dias', 'Rua Duzentos e Cinqüenta', 'Várzea Grande');
   
 drop table customers;
   
