@@ -1,5 +1,5 @@
 create table customers(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     street varchar(255) not null,
     city varchar(255) not null,
@@ -14,7 +14,7 @@ create table natural_person(
 
 insert into customers(name, street, city, state, credit_limit)
 values
-	("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
+    ("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
     ("Cecília Olivia Rodrigues", "Rua Sizuka Usuy", "Cianorte", "PR", 3170),
     ("Augusto Fernando Carlos Eduardo Cardoso", "Rua Baldomiro Koerich", "Palhoça", "SC", 1067),
     ("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
@@ -23,18 +23,18 @@ values
     
 insert into natural_person
 values
-	(1, "26774287840"),
+    (1, "26774287840"),
     (2, "97918477200");
     
 -- Response -------------------------------------------------------
     
 select 
-	INSERT( INSERT( INSERT( cpf, 10, 0, '-' ), 7, 0, '.' ), 4, 0, '.' ) CPF 
+    INSERT( INSERT( INSERT( cpf, 10, 0, '-' ), 7, 0, '.' ), 4, 0, '.' ) CPF 
     from natural_person;
 
 select 
-	CONCAT(SUBSTR(cpf,1,3),'.',SUBSTR(cpf,4,3),'.',SUBSTR(cpf,7,3),'-',SUBSTR(cpf,10,2)) CPF 
-	from natural_person;
+    CONCAT(SUBSTR(cpf,1,3),'.',SUBSTR(cpf,4,3),'.',SUBSTR(cpf,7,3),'-',SUBSTR(cpf,10,2)) CPF 
+    from natural_person;
 
 -- ----------------------------------------------------------------
     
