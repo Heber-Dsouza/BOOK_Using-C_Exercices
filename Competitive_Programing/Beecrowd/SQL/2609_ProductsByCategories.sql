@@ -1,10 +1,10 @@
 create table categories (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null
 );
 
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     amount int not null,
     price decimal(9, 2) not null,
@@ -17,15 +17,15 @@ select * from products;
 
 insert into categories(name)
 	values
-		('wood'),
+	('wood'),
         ('luxury'),
-		('vintage'),
-		('modern'),
+	('vintage'),
+	('modern'),
         ('super luxury');
         
 insert into products(name, amount, price, id_categories)
 	values
-		('Two-door wardrobe', 100, 800, 1),
+	('Two-door wardrobe', 100, 800, 1),
         ('Dining table', 1000, 560, 3),
         ('Towel holder', 10000, 25.50, 4),
         ('Computer desk', 350, 320.50, 2),
@@ -37,25 +37,25 @@ select sum(amount) from products;
 select c.name, p.amount sum from categories c inner join products p group by p.name;
 
 select id_categories, sum(amount) sum from products p inner join categories c on p.id_categories = c.id
-	group by id_categories;
+    group by id_categories;
     
 select c.name, sum(p.amount) from products p inner join categories c on p.id_categories = c.id
-	group by p.id_categories
+    group by p.id_categories
     order by c.name;
     
 select c.name, sum(p.amount) sum from categories c inner join products p on p.id_categories = c.id
-	group by c.id
+    group by c.id
     order by c.name;
     
 select c.name, sum(p.amount) sum, sum(p.price) price from products p inner join categories c on p.id_categories = c.id
-	group by p.id_categories
+    group by p.id_categories
     order by price;
   
 select c.name, sum(p.amount) sum from categories c inner join products p on p.id_categories = c.id
-	group by c.name;
+    group by c.name;
     
 select c.name, sum(amount) sum from products p join categories c on p.id_categories = c.id
-	group by c.name;
+    group by c.name;
     
 /*
 	As usual the sales industry is doing an analysis of how many products we have in stock, and you can help them.
