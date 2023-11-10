@@ -1,5 +1,5 @@
 create table customers(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     street varchar(255) not null,
     city varchar(255) not null,
@@ -9,7 +9,7 @@ create table customers(
 
 insert into customers(name, street, city, state, credit_limit)
 values
-	("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
+    ("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
     ("Cecília Olivia Rodrigues", "Rua Sizuka Usuy", "Cianorte", "PR", 3170),
     ("Augusto Fernando Carlos Eduardo Cardoso", "Rua Baldomiro Koerich", "Palhoça", "SC", 1067),
     ("Nicolas Diogo Cardoso", "Acesso Um", "Porto Alegre", "RS", 475),
