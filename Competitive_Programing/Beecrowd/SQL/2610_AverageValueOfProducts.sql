@@ -1,5 +1,5 @@
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(100) not null,
     amount int not null,
     price decimal(9, 2) not null
@@ -9,7 +9,7 @@ drop table products;
 
 insert into products(name, amount, price)
 	values
-		("Two-doors wardrobe", 100, 800),
+	("Two-doors wardrobe", 100, 800),
         ("Dining table", 1000, 560),
         ("Towel holder", 10000, 25.50),
         ("Computer desk", 350, 320.50),
