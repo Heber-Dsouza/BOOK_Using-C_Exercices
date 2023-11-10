@@ -1,19 +1,19 @@
 create table lawyers(
-	register int primary key,
+    register int primary key,
     name varchar(100) not null,
     customers_number int not null
 );
 
 insert into lawyers
 values
-	(1648, "Marty M. Harrison", 5),
+    (1648, "Marty M. Harrison", 5),
     (2427, "Jonathan J. Blevins", 15),
     (3365, "Chelsey D. Sanders", 20),
     (4153, "Dorothy W. Ford", 16),
     (5525, "Penny J. Cormier", 6);
     
 select name, customers_number from lawyers
-	where customers_number = min(customers_number)
+    where customers_number = min(customers_number)
     or customers_number = avg(customers_number)
     or customers_number = max(customers_number);
     
