@@ -1,18 +1,18 @@
 create table prices(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     categorie varchar(70) not null,
     value decimal(9, 2) not null
 );
 
 create table movies(
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(100) not null,
     id_prices int not null, foreign key (id_prices) references prices(id)
 );
 
 insert into prices(categorie, value)
 	values
-		("Releases", 3.50),
+  	("Releases", 3.50),
         ("Bronze Seal", 2.00),
         ("Silver Seal", 2.50),
         ("Gold Seal", 3.00),
@@ -20,7 +20,7 @@ insert into prices(categorie, value)
         
 insert into movies(name, id_prices)
 	values
-		("Batman", 3),
+	("Batman", 3),
         ("The Battle of the Dark River", 3),
         ("White Duck", 5),
         ("Breaking Barriers", 4),
