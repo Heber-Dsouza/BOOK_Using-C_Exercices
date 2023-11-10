@@ -1,5 +1,5 @@
 create table providers (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     street varchar(255) not null,
     city varchar(255) not null,
@@ -8,7 +8,7 @@ create table providers (
 
 insert into providers(name, street, city, state)
 	values
-		('Henrique', 'Av Brasil', 'Rio de Janeiro', 'RJ'),
+	('Henrique', 'Av Brasil', 'Rio de Janeiro', 'RJ'),
         ('Marcelo Augusto', 'Rua Imigrantes', 'Belo Horizonte', 'MG'),
         ('Caroline Silva', 'Av São Paulo', 'Salvador', 'BA'),
         ('Guilerme Staff', 'Rua Central', 'Porto Alegre', 'RS'),
