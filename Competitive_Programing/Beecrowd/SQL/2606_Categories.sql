@@ -1,5 +1,5 @@
 create table categories (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null
 );
 
@@ -8,7 +8,7 @@ drop table categories;
 describe categories;
 
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     amount int not null,
     price int not null,
@@ -17,7 +17,7 @@ create table products (
 
 insert into categories(name)
 	values
-		('old stock'),
+	('old stock'),
         ('new stock'),
         ('modern'),
         ('commercial'),
@@ -30,7 +30,7 @@ insert into categories(name)
         
 insert into products(name, amount, price, id_categories)
 	values
-		('Lampshade', 100, 800, 4),
+	('Lampshade', 100, 800, 4),
         ('Table for painting', 1000, 560, 9),
         ('Notebook desk', 10000, 25.50, 9),
         ('Computer desk', 350, 320.50, 6),
