@@ -1,17 +1,17 @@
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     amount int not null,
     price int not null
 );
 
 alter table products
-	modify price decimal(19, 2) not null;
+    modify price decimal(19, 2) not null;
     
 drop table products;
 
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     amount int not null,
     price decimal(19, 2) not null
@@ -21,7 +21,7 @@ describe products;
 
 insert into products(name, amount, price)
 	values
-		('Two-door wardrobe', 100, 800),
+	('Two-door wardrobe', 100, 800),
         ('Dining table', 1000, 560),
         ('Towel holder', 10000, 25.50),
         ('Computer desk', 350, 320.50),
