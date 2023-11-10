@@ -1,7 +1,7 @@
 -- Under 10 or Greater Than 100
 
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255),
     amount int,
     price int
@@ -12,7 +12,7 @@ select * from products;
 describe products;
 
 alter table products 
-	modify name varchar(255) not null, 
+    modify name varchar(255) not null, 
     modify amount int not null,
     modify price int not null;
     
