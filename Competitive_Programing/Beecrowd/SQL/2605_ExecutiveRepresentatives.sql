@@ -1,13 +1,13 @@
 create table categories (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255)
 );
 
 alter table categories 
-	modify name varchar(255) not null;
+    modify name varchar(255) not null;
 
 create table providers (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255),
     street varchar(255),
     city varchar(255),
@@ -15,13 +15,13 @@ create table providers (
 );
 
 alter table providers 
-	modify name varchar(255) not null,
+    modify name varchar(255) not null,
     modify street varchar(255) not null,
     modify city varchar(255) not null,
     modify state char(2) not null;
 
 create table products (
-	id int primary key auto_increment,
+    id int primary key auto_increment,
     name varchar(255) not null,
     amount int not null,
     price int not null,
@@ -35,7 +35,7 @@ describe products;
 
 insert into categories(name)
 	values
-		('old stock'),
+	('old stock'),
         ('new stock'),
         ('modern'),
         ('commercial'),
@@ -50,7 +50,7 @@ select * from categories;
 
 insert into providers(name, street, city, state)
 	values
-		('Henrique', 'Av Brasil', 'Rio de Janeiro', 'RJ'),
+	('Henrique', 'Av Brasil', 'Rio de Janeiro', 'RJ'),
         ('Marcelo Augusto', 'Rua Imigrantes', 'Belo Horizonte', 'MG'),
         ('Caroline Silva', 'Av São Paulo', 'Salvador', 'BA'),
         ('Guilerme Staff', 'Rua Central', 'Porto Alegre', 'RS'),
@@ -61,7 +61,7 @@ select * from providers;
 
 insert into products(name, amount, price, id_providers, id_categories)
 	values
-		('Two-door wardrobe', 100, 800, 6, 8),
+	('Two-door wardrobe', 100, 800, 6, 8),
         ('Dining table', 1000, 560, 1, 9),
         ('Towel holder', 10000, 25.50, 5, 1),
         ('Computer desk', 350, 320.50, 4, 6),
